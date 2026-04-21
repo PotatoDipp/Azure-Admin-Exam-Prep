@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure Exam Lab — AZ-900 · AZ-104 · AZ-305</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ═══════════════════════════ SCREEN: HOME ═══════════════════════════ -->
+    <div id="screen-home" class="screen active">
+      <div class="home-bg-grid"></div>
+      <div class="home-content">
+        <div class="logo-badge">AZURE ADMINISTRATOR EXAM LAB</div>
+        <h1 class="home-title">
+          Certify<br /><span class="accent">your skills.</span>
+        </h1>
+        <p class="home-sub">
+          Practice questions aligned to Microsoft's official exam objectives.<br />All
+          content sourced from Microsoft Learn documentation.
+        </p>
+
+        <div class="exam-cards">
+          <div class="exam-card" data-exam="AZ900">
+            <div class="exam-card-tag">Fundamentals</div>
+            <div class="exam-card-code">AZ-900</div>
+            <div class="exam-card-name">Microsoft Azure Fundamentals</div>
+            <div class="exam-card-topics">
+              Cloud Concepts · Core Services · Management · Pricing
+            </div>
+            <div class="exam-card-meta">
+              <span class="pill">60 Qs</span
+              ><span class="pill">Multiple types</span
+              ><span class="pill">Beginner</span>
+            </div>
+            <button class="btn-start" data-exam="AZ900">
+              Start Practice →
+            </button>
+          </div>
+
+          <div class="exam-card" data-exam="AZ104">
+            <div class="exam-card-tag">Associate</div>
+            <div class="exam-card-code">AZ-104</div>
+            <div class="exam-card-name">Microsoft Azure Administrator</div>
+            <div class="exam-card-topics">
+              Identity · Storage · Compute · Networking · Monitoring
+            </div>
+            <div class="exam-card-meta">
+              <span class="pill">60 Qs</span
+              ><span class="pill">Multiple types</span
+              ><span class="pill">Intermediate</span>
+            </div>
+            <button class="btn-start" data-exam="AZ104">
+              Start Practice →
+            </button>
+          </div>
+
+          <div class="exam-card" data-exam="AZ305">
+            <div class="exam-card-tag">Expert</div>
+            <div class="exam-card-code">AZ-305</div>
+            <div class="exam-card-name">Azure Solutions Architect Expert</div>
+            <div class="exam-card-topics">
+              Identity · Data · Apps · Infrastructure · Architecture
+            </div>
+            <div class="exam-card-meta">
+              <span class="pill">60 Qs</span
+              ><span class="pill">Multiple types</span
+              ><span class="pill">Advanced</span>
+            </div>
+            <button class="btn-start" data-exam="AZ305">
+              Start Practice →
+            </button>
+          </div>
+        </div>
+
+        <div class="home-footer">
+          <span
+            >Questions verified against
+            <a
+              href="https://learn.microsoft.com/en-us/certifications/"
+              target="_blank"
+              >Microsoft Learn</a
+            ></span
+          >
+          <span>·</span>
+          <span>Source docs linked per question</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ SCREEN: QUIZ ════════════════════════════ -->
+    <div id="screen-quiz" class="screen">
+      <!-- Top bar -->
+      <header class="quiz-header">
+        <button id="btn-home" class="btn-ghost">← Home</button>
+        <div class="quiz-exam-label" id="quiz-exam-label">AZ-900</div>
+        <div class="quiz-progress-wrap">
+          <span id="progress-text">1 / 10</span>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+        <div class="quiz-score-wrap">
+          Score: <span id="score-display">0</span>
+        </div>
+      </header>
+
+      <!-- Question area -->
+      <main class="quiz-main">
+        <!-- Category / objective breadcrumb -->
+        <div class="q-meta">
+          <span class="q-type-badge" id="q-type-badge">Multiple Choice</span>
+          <span class="q-objective" id="q-objective">Objective</span>
+          <a
+            class="q-doc-link"
+            id="q-doc-link"
+            href="#"
+            target="_blank"
+            title="Open Microsoft Docs"
+            >📄 Docs</a
+          >
+        </div>
+
+        <!-- Question text -->
+        <div class="q-text" id="q-text">Question loads here.</div>
+
+        <!-- ── Multiple Choice ── -->
+        <div class="answer-zone" id="zone-mc">
+          <div class="mc-options" id="mc-options"></div>
+        </div>
+
+        <!-- ── Multi-Select ── -->
+        <div class="answer-zone" id="zone-ms">
+          <p class="zone-hint" id="ms-hint">Select all that apply.</p>
+          <div class="mc-options" id="ms-options"></div>
+          <button class="btn-submit" id="ms-submit">Submit Answer</button>
+        </div>
+
+        <!-- ── Drag and Drop ── -->
+        <div class="answer-zone" id="zone-drag">
+          <p class="zone-hint">Drag each item to its correct category.</p>
+          <div class="drag-workspace">
+            <div class="drag-pool" id="drag-pool"></div>
+            <div class="drag-targets" id="drag-targets"></div>
+          </div>
+          <button class="btn-submit" id="drag-submit">Check Order</button>
+        </div>
+
+        <!-- ── Command Input ── -->
+        <div class="answer-zone" id="zone-cmd">
+          <p class="zone-hint" id="cmd-hint">Complete the command:</p>
+          <div class="cmd-shell">
+            <div class="cmd-prompt">
+              <span class="cmd-prefix" id="cmd-prefix">az</span>
+              <input
+                type="text"
+                id="cmd-input"
+                class="cmd-input"
+                placeholder="type command…"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <button class="btn-submit" id="cmd-submit">Run ↵</button>
+          </div>
+          <div class="cmd-hints" id="cmd-hints"></div>
+        </div>
+
+        <!-- ── True / False ── -->
+        <div class="answer-zone" id="zone-tf">
+          <div class="tf-options">
+            <button class="tf-btn" data-val="true">✓ True</button>
+            <button class="tf-btn" data-val="false">✗ False</button>
+          </div>
+        </div>
+
+        <!-- ── Order / Sequence ── -->
+        <div class="answer-zone" id="zone-order">
+          <p class="zone-hint">
+            Drag items into the correct order (top = first).
+          </p>
+          <ul class="sortable-list" id="sortable-list"></ul>
+          <button class="btn-submit" id="order-submit">Confirm Order</button>
+        </div>
+
+        <!-- Feedback banner -->
+        <div class="feedback-banner hidden" id="feedback-banner">
+          <div class="feedback-inner">
+            <div class="feedback-verdict" id="feedback-verdict"></div>
+            <div class="feedback-explain" id="feedback-explain"></div>
+            <a class="feedback-doc" id="feedback-doc" href="#" target="_blank"
+              >📖 Read in Microsoft Docs →</a
+            >
+            <button class="btn-next" id="btn-next">Next Question →</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ═══════════════════════════ SCREEN: RESULTS ═════════════════════════ -->
+    <div id="screen-results" class="screen">
+      <div class="results-wrap">
+        <div class="results-badge" id="results-badge">🏆</div>
+        <h2 class="results-title">Session Complete</h2>
+        <div class="results-score-ring">
+          <svg viewBox="0 0 120 120" class="ring-svg">
+            <circle cx="60" cy="60" r="50" class="ring-bg" />
+            <circle cx="60" cy="60" r="50" class="ring-fill" id="ring-fill" />
+          </svg>
+          <div class="ring-pct" id="ring-pct">0%</div>
+        </div>
+        <div class="results-stats">
+          <div class="stat">
+            <span id="stat-correct">0</span><label>Correct</label>
+          </div>
+          <div class="stat">
+            <span id="stat-wrong">0</span><label>Incorrect</label>
+          </div>
+          <div class="stat">
+            <span id="stat-total">0</span><label>Total</label>
+          </div>
+        </div>
+        <div class="results-breakdown" id="results-breakdown"></div>
+        <div class="results-actions">
+          <button class="btn-primary" id="btn-retry">Retry This Exam</button>
+          <button class="btn-ghost-lg" id="btn-back-home">Back to Home</button>
+        </div>
+        <div class="results-doc-note">
+          Review weak areas in
+          <a href="https://learn.microsoft.com/en-us/training/" target="_blank"
+            >Microsoft Learn</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
